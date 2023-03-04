@@ -1,23 +1,30 @@
 package hexlet.code;
 
-
-import hexlet.code.games.Calculator;
+import hexlet.code.games.Game;
+import hexlet.code.games.Playable;
 import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class App {
     private static final String MSG_CHOOSE_GAME = "Please enter the game number and press Enter.";
-    private static final String MSG_GREETING = "1 - Greet";
-    private static final String MSG_GAME_EVEN = "2 - Even";
-    private static final String MSG_GAME_CALC = "3 - Calc";
-    private static final String MSG_GAME_GCD = "4 - GCD";
-    private static final String MSG_GAME_PROGRESSION = "5 - Progression";
-    private static final String MSG_GAME_PRIME = "6 - Prime";
-    private static final String MSG_EXIT = "0 - Exit";
+    private static final String MSG_GAME = "%s - %s\n";
+
+    private static final Map<String, Playable> GAMES = new LinkedHashMap<>();
+
+    static {
+        GAMES.put("2", new Even());
+        GAMES.put("3", new Calc());
+        GAMES.put("4", new GCD());
+        GAMES.put("5", new Progression());
+        GAMES.put("6", new Prime());
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -27,32 +34,17 @@ public class App {
 
     private static void chooseGame(Scanner scanner) {
         System.out.println(MSG_CHOOSE_GAME);
-        System.out.println(MSG_GREETING);
-        System.out.println(MSG_GAME_EVEN);
-        System.out.println(MSG_GAME_CALC);
-        System.out.println(MSG_GAME_GCD);
-        System.out.println(MSG_GAME_PROGRESSION);
-        System.out.println(MSG_GAME_PRIME);
-        System.out.println(MSG_EXIT);
-        switch (scanner.next()) {
+        System.out.printf(MSG_GAME, "1", "Greet");
+        GAMES.keySet().forEach(k -> System.out.printf(MSG_GAME, k, GAMES.get(k).getGameName()));
+        System.out.printf(MSG_GAME, "0", "Exit");
+        String key = scanner.next();
+        switch (key) {
             case "1":
                 Cli.printWelcome();
                 Cli.askNameAndGreeting();
                 break;
-            case "2":
-                new Even(scanner).start();
-                break;
-            case "3":
-                new Calculator(scanner).start();
-                break;
-            case "4":
-                new GCD(scanner).start();
-                break;
-            case "5":
-                new Progression(scanner).start();
-                break;
-            case "6":
-                new Prime(scanner).start();
+            case "2", "3", "4", "5", "6":
+                Game.play(scanner, GAMES.get(key));
                 break;
             case "0":
                 break;

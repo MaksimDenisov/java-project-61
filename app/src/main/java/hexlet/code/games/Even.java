@@ -1,36 +1,27 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
-
-public class Even extends Game {
+public class Even implements Playable {
     private static final String NO = "no";
     private static final String YES = "yes";
+    private int number;
 
-    public Even(Scanner scanner) {
-        super(scanner);
+    @Override
+    public void startRound() {
+        number = getRandomNumber(100);
     }
 
     @Override
-    protected String getRules() {
+    public String getRules() {
         return "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }
 
-    protected boolean round() {
-        int number = getRandomNumber();
-        System.out.printf(MSG_QUESTION, number);
-        String answer = getScanner().next();
-        String correctAnswer = isEven(number);
-        System.out.printf(MSG_YOUR_ANSWER, answer);
-        if (answer.equals(correctAnswer)) {
-            printCorrectAnswer();
-            return true;
-        } else {
-            printWrongAnswer(answer, correctAnswer);
-            return false;
-        }
+    @Override
+    public String getCorrectAnswer() {
+        return (number % 2 == 0) ? YES : NO;
     }
 
-    private String isEven(long number) {
-        return (number % 2 == 0) ? YES : NO;
+    @Override
+    public String getQuestion() {
+        return String.valueOf(number);
     }
 }

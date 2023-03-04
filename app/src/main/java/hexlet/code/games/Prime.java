@@ -1,34 +1,28 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
-
-public class Prime extends Game {
+public class Prime implements Playable {
     private static final String NO = "no";
     private static final String YES = "yes";
+    private int number;
 
-    public Prime(Scanner scanner) {
-        super(scanner);
+    @Override
+    public void startRound() {
+        number = getRandomNumber(100);
     }
 
     @Override
-    protected String getRules() {
+    public String getRules() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }
 
     @Override
-    protected boolean round() {
-        int number = getRandomNumber();
-        System.out.printf(MSG_QUESTION, number);
-        String answer = getScanner().next();
-        String correctAnswer = (isPrime(number)) ? YES : NO;
-        System.out.printf(MSG_YOUR_ANSWER, answer);
-        if (answer.equals(correctAnswer)) {
-            printCorrectAnswer();
-            return true;
-        } else {
-            printWrongAnswer(answer, correctAnswer);
-            return false;
-        }
+    public String getCorrectAnswer() {
+        return isPrime(number) ? YES : NO;
+    }
+
+    @Override
+    public String getQuestion() {
+        return String.valueOf(number);
     }
 
     boolean isPrime(int n) {

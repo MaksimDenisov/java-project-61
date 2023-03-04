@@ -1,41 +1,33 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
+public class GCD implements Playable {
 
-public class GCD extends Game {
-    protected static final String MSG_QUESTION = "Question: %d  %d\n";
+    private int a;
+    private int b;
 
-    public GCD(Scanner scanner) {
-        super(scanner);
+    @Override
+    public void startRound() {
+        a = getRandomNumber(100);
+        b = getRandomNumber(100);
     }
 
     @Override
-    protected String getRules() {
+    public String getRules() {
         return "Find the greatest common divisor of given numbers.";
     }
 
     @Override
-    protected boolean round() {
-        int a = getRandomNumber();
-        int b = getRandomNumber();
-        int correctAnswer = getGCD(a, b);
-        System.out.printf(MSG_QUESTION, a, b);
-        int answer = Integer.parseInt(getScanner().next());
-        if (answer == correctAnswer) {
-            printCorrectAnswer();
-            return true;
-        } else {
-            printWrongAnswer(String.valueOf(answer), String.valueOf(correctAnswer));
-            return false;
-        }
-    }
-
-    private int getGCD(int a, int b) {
-        while ((a % b) > 0)  {
+    public String getCorrectAnswer() {
+        while ((a % b) > 0) {
             int r = a % b;
             a = b;
             b = r;
         }
-        return b;
+        return String.valueOf(b);
+    }
+
+    @Override
+    public String getQuestion() {
+        return String.format("%d  %d", a, b);
     }
 }
