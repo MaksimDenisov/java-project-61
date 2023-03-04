@@ -13,8 +13,8 @@ public class Calc implements Playable {
 
     @Override
     public final void startRound() {
-        a = getRandomNumber(100);
-        b = getRandomNumber(100);
+        a = getRandomNumber(MAX_NUMBER);
+        b = getRandomNumber(MAX_NUMBER);
         operator = getRandomOperator();
     }
 
@@ -36,6 +36,6 @@ public class Calc implements Playable {
 
     private char getRandomOperator() {
         char[] operators = new char[]{'+', '-', '*'};
-        return operators[getRandomNumber(3)];
+        return operators[getRandomNumber(operators.length)];
     }
 }

@@ -25,7 +25,7 @@ public class Prime implements Playable {
         return String.valueOf(number);
     }
 
-    boolean isPrime(int n) {
+    private boolean isPrime(int n) {
         if (n == 1) {
             return false;
         }
