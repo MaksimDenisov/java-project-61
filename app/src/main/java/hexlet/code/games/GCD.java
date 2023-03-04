@@ -1,6 +1,4 @@
-package hexlet.code;
-
-import hexlet.code.games.Game;
+package hexlet.code.games;
 
 import java.util.Scanner;
 
