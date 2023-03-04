@@ -29,7 +29,7 @@ public class Calc implements Playable {
 
     @Override
     public String getQuestion() {
-        return String.format("%d  %c  %d", a, operator, b);
+        return String.format("%d %c %d", a, operator, b);
 
     }
 
