@@ -28,6 +28,6 @@ public class GCD implements Playable {
 
     @Override
     public String getQuestion() {
-        return String.format("%d  %d", a, b);
+        return String.format("%d %d", a, b);
     }
 }
