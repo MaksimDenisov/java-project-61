@@ -1,14 +1,14 @@
 package hexlet.code.games;
 
 public class GCD implements Playable {
-
+    private static final int MAX_NUMBER = 100;
     private int a;
     private int b;
 
     @Override
     public final void startRound() {
-        a = getRandomNumber(100);
-        b = getRandomNumber(100);
+        a = getRandomNumber(MAX_NUMBER);
+        b = getRandomNumber(MAX_NUMBER);
     }
 
     @Override

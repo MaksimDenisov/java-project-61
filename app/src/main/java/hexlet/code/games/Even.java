@@ -1,13 +1,14 @@
 package hexlet.code.games;
 
 public class Even implements Playable {
+    private static final int MAX_NUMBER = 100;
     private static final String NO = "no";
     private static final String YES = "yes";
     private int number;
 
     @Override
     public final void startRound() {
-        number = getRandomNumber(100);
+        number = getRandomNumber(MAX_NUMBER);
     }
 
     @Override

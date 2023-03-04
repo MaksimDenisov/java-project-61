@@ -13,6 +13,7 @@ public class Game {
     private static final String MSG_CORRECT = "Correct!";
     private static final String MSG_WRONG_ANSWER = "'%s' is wrong answer ;(. Correct answer was '%s'.\n";
     private static final String MSG_TRY_AGAIN = "Let's try again, %s!\n";
+    private static final int GAME_ROUNDS = 3;
 
     public static void play(Scanner scanner, Playable playable) {
         System.out.println(MSG_WELCOME);
@@ -20,7 +21,7 @@ public class Game {
         String name = scanner.next();
         System.out.printf(MSG_GREETING, name);
         System.out.println(playable.getRules());
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < GAME_ROUNDS; i++) {
             playable.startRound();
             System.out.printf(MSG_QUESTION, playable.getQuestion());
             String answer = scanner.next();
