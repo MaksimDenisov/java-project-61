@@ -10,3 +10,5 @@
 [![asciicast](https://asciinema.org/a/564588.svg)](https://asciinema.org/a/564588)
 ##Progression
 [![asciicast](https://asciinema.org/a/564589.svg)](https://asciinema.org/a/564589)
+##Prime
+[![asciicast](https://asciinema.org/a/564590.svg)](https://asciinema.org/a/564590)
