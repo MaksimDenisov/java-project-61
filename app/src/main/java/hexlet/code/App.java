@@ -10,6 +10,7 @@ public class App {
     private static final String MSG_GREETING = "1 - Greet";
     private static final String MSG_GAME_EVEN = "2 - Even";
     private static final String MSG_GAME_CALC = "3 - Calc";
+    private static final String MSG_GAME_GCD = "4 - GCD";
     private static final String MSG_EXIT = "0 - Exit";
 
     public static void main(String[] args) {
@@ -23,6 +24,7 @@ public class App {
         System.out.println(MSG_GREETING);
         System.out.println(MSG_GAME_EVEN);
         System.out.println(MSG_GAME_CALC);
+        System.out.println(MSG_GAME_GCD);
         System.out.println(MSG_EXIT);
         switch (scanner.next()) {
             case "1":
@@ -34,6 +36,9 @@ public class App {
                 break;
             case "3":
                 new Calculator(scanner).start();
+                break;
+            case "4":
+                new GCD(scanner).start();
                 break;
             case "0":
                 break;

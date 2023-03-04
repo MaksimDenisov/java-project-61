@@ -23,11 +23,10 @@ public class Calculator extends Game {
         System.out.printf(MSG_QUESTION, a, operator, b);
         int answer = Integer.parseInt(getScanner().next());
         if (answer == correctAnswer) {
-            System.out.println(MSG_CORRECT);
+            printCorrectAnswer();
             return true;
         } else {
-            System.out.printf(MSG_WRONG_ANSWER, answer, correctAnswer);
-            System.out.printf(MSG_TRY_AGAIN, getName());
+            printWrongAnswer(String.valueOf(answer), String.valueOf(correctAnswer));
             return false;
         }
     }
