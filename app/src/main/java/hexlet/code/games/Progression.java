@@ -9,7 +9,7 @@ public class Progression implements Playable {
     private int secretIndex;
 
     @Override
-    public void startRound() {
+    public final void startRound() {
         progression = new int[PROGRESSION_LENGTH];
         int first = getRandomNumber(PROGRESSION_MAX_FIRST_NUMBER);
         int step = getRandomNumber(PROGRESSION_MAX_STEP) + 1;
@@ -20,17 +20,17 @@ public class Progression implements Playable {
     }
 
     @Override
-    public String getRules() {
+    public final String getRules() {
         return "What number is missing in the progression?";
     }
 
     @Override
-    public String getCorrectAnswer() {
+    public final String getCorrectAnswer() {
         return String.valueOf(progression[secretIndex]);
     }
 
     @Override
-    public String getQuestion() {
+    public final String getQuestion() {
         StringBuilder builder = new StringBuilder("Question:");
         for (int i = 0; i < progression.length; i++) {
             builder.append(" ").append((i == secretIndex) ? ".." : String.valueOf(progression[i]));

@@ -6,22 +6,22 @@ public class Even implements Playable {
     private int number;
 
     @Override
-    public void startRound() {
+    public final void startRound() {
         number = getRandomNumber(100);
     }
 
     @Override
-    public String getRules() {
+    public final String getRules() {
         return "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }
 
     @Override
-    public String getCorrectAnswer() {
+    public final String getCorrectAnswer() {
         return (number % 2 == 0) ? YES : NO;
     }
 
     @Override
-    public String getQuestion() {
+    public final String getQuestion() {
         return String.valueOf(number);
     }
 }

@@ -6,18 +6,18 @@ public class GCD implements Playable {
     private int b;
 
     @Override
-    public void startRound() {
+    public final void startRound() {
         a = getRandomNumber(100);
         b = getRandomNumber(100);
     }
 
     @Override
-    public String getRules() {
+    public final String getRules() {
         return "Find the greatest common divisor of given numbers.";
     }
 
     @Override
-    public String getCorrectAnswer() {
+    public final String getCorrectAnswer() {
         while ((a % b) > 0) {
             int r = a % b;
             a = b;
@@ -27,7 +27,7 @@ public class GCD implements Playable {
     }
 
     @Override
-    public String getQuestion() {
+    public final String getQuestion() {
         return String.format("%d %d", a, b);
     }
 }

@@ -1,24 +1,25 @@
 package hexlet.code.games;
 
 public class Calc implements Playable {
+    private static final int MAX_NUMBER = 100;
     private int a;
     private int b;
     private char operator;
 
     @Override
-    public String getRules() {
+    public final String getRules() {
         return "What is the result of the expression?";
     }
 
     @Override
-    public void startRound() {
+    public final void startRound() {
         a = getRandomNumber(100);
         b = getRandomNumber(100);
         operator = getRandomOperator();
     }
 
     @Override
-    public String getCorrectAnswer() {
+    public final String getCorrectAnswer() {
         return switch (operator) {
             case '+' -> String.valueOf(a + b);
             case '-' -> String.valueOf(a - b);
@@ -28,7 +29,7 @@ public class Calc implements Playable {
     }
 
     @Override
-    public String getQuestion() {
+    public final String getQuestion() {
         return String.format("%d %c %d", a, operator, b);
 
     }

@@ -6,22 +6,22 @@ public class Prime implements Playable {
     private int number;
 
     @Override
-    public void startRound() {
+    public final void startRound() {
         number = getRandomNumber(100);
     }
 
     @Override
-    public String getRules() {
+    public final String getRules() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }
 
     @Override
-    public String getCorrectAnswer() {
+    public final String getCorrectAnswer() {
         return isPrime(number) ? YES : NO;
     }
 
     @Override
-    public String getQuestion() {
+    public final String getQuestion() {
         return String.valueOf(number);
     }
 
