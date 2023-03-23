@@ -11,10 +11,11 @@ public class Cli {
         System.out.println(MSG_WELCOME);
     }
 
-    public static void askNameAndGreeting() {
+    public static String askNameAndGreeting() {
         System.out.println(MSG_ASK_NAME);
         Scanner scanner = new Scanner(System.in);
         String name = scanner.next();
         System.out.printf(MSG_GREETING, name);
+        return name;
     }
 }

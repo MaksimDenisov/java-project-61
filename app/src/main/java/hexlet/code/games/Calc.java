@@ -1,25 +1,25 @@
 package hexlet.code.games;
 
-public class Calc implements Playable {
+import hexlet.code.Utils;
+
+public class Calc implements QuestionGame {
+    private static final String RULES = "What is the result of the expression?";
     private static final int MAX_NUMBER = 100;
-    private int a;
-    private int b;
-    private char operator;
 
     @Override
     public final String getRules() {
-        return "What is the result of the expression?";
+        return RULES;
     }
 
     @Override
-    public final void startRound() {
-        a = getRandomNumber(MAX_NUMBER);
-        b = getRandomNumber(MAX_NUMBER);
-        operator = getRandomOperator();
+    public final Question getNewQuestion() {
+        int a = Utils.getRandomNumber(MAX_NUMBER);
+        int b = Utils.getRandomNumber(MAX_NUMBER);
+        char operator = getRandomOperator();
+        return new Question(String.format("%d %c %d", a, operator, b), getCorrectAnswer(a, b, operator));
     }
 
-    @Override
-    public final String getCorrectAnswer() {
+    public final String getCorrectAnswer(int a, int b, char operator) {
         return switch (operator) {
             case '+' -> String.valueOf(a + b);
             case '-' -> String.valueOf(a - b);
@@ -28,14 +28,8 @@ public class Calc implements Playable {
         };
     }
 
-    @Override
-    public final String getQuestion() {
-        return String.format("%d %c %d", a, operator, b);
-
-    }
-
     private char getRandomOperator() {
         char[] operators = new char[]{'+', '-', '*'};
-        return operators[getRandomNumber(operators.length)];
+        return operators[Utils.getRandomNumber(operators.length)];
     }
 }

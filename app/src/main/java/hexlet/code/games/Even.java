@@ -1,28 +1,23 @@
 package hexlet.code.games;
 
-public class Even implements Playable {
-    private static final int MAX_NUMBER = 100;
-    private static final String NO = "no";
-    private static final String YES = "yes";
-    private int number;
+import hexlet.code.Utils;
 
-    @Override
-    public final void startRound() {
-        number = getRandomNumber(MAX_NUMBER);
-    }
+public class Even implements QuestionGame {
+    private static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private static final int MAX_NUMBER = 100;
 
     @Override
     public final String getRules() {
-        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        return RULES;
     }
 
     @Override
-    public final String getCorrectAnswer() {
-        return (number % 2 == 0) ? YES : NO;
+    public final Question getNewQuestion() {
+        int number = Utils.getRandomNumber(MAX_NUMBER);
+        return new Question(String.valueOf(number), (isEven(number)) ? "yes" : "no");
     }
 
-    @Override
-    public final String getQuestion() {
-        return String.valueOf(number);
+    private boolean isEven(int number) {
+        return (number % 2 == 0);
     }
 }
