@@ -2,19 +2,28 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class GCD implements QuestionGame {
-    private static final String RULES = "Find the greatest common divisor of given numbers.";
-    private static final int MAX_NUMBER = 99;
+    private final String rules = "Find the greatest common divisor of given numbers.";
+    private final int maxNumber = 99;
 
+    /**
+     * Rules of game.
+     * @return Rules of game.
+     */
     @Override
-    public final String getRules() {
-        return RULES;
+    public String getRules() {
+        return rules;
     }
 
+    /**
+     * Get new question.
+     * @return Question with correct answer.
+     */
     @Override
-    public final Question getNewQuestion() {
-        int a = Utils.getRandomNumber(MAX_NUMBER) + 1;
-        int b = Utils.getRandomNumber(MAX_NUMBER) + 1;
+    public Question getNewQuestion() {
+        int a = Utils.getRandomNumber(maxNumber) + 1;
+        int b = Utils.getRandomNumber(maxNumber) + 1;
         return new Question(String.format("%d %d", a, b), String.valueOf(getGCD(a, b)));
     }
 

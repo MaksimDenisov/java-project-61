@@ -2,18 +2,27 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class Even implements QuestionGame {
-    private static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    private static final int MAX_NUMBER = 100;
+    private final String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private final int maxNumber = 100;
 
+    /**
+     * Rules of game.
+     * @return Rules of game.
+     */
     @Override
-    public final String getRules() {
-        return RULES;
+    public String getRules() {
+        return rules;
     }
 
+    /**
+     * Get new question.
+     * @return Question with correct answer.
+     */
     @Override
-    public final Question getNewQuestion() {
-        int number = Utils.getRandomNumber(MAX_NUMBER);
+    public Question getNewQuestion() {
+        int number = Utils.getRandomNumber(maxNumber);
         return new Question(String.valueOf(number), (isEven(number)) ? "yes" : "no");
     }
 

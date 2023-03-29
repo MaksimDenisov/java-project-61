@@ -2,46 +2,41 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
-public final class Progression implements QuestionGame {
-    private static final String RULES = "What number is missing in the progression?";
-    private static final int PROGRESSION_LENGTH = 10;
-    private static final int PROGRESSION_MAX_STEP = 5;
-    private static final int PROGRESSION_MAX_FIRST_NUMBER = 10;
+@SuppressWarnings("FieldCanBeLocal")
+public class Progression implements QuestionGame {
+    private final String rules = "What number is missing in the progression?";
 
-    private int[] progression;
-    private int secretIndex;
-
+    /**
+     * Rules of game.
+     * @return Rules of game.
+     */
     @Override
     public String getRules() {
-        return RULES;
+        return rules;
     }
 
+    /**
+     * Get new question.
+     * @return Question with correct answer.
+     */
     @Override
     public Question getNewQuestion() {
-        return new Question(getQuestion(), getCorrectAnswer());
-    }
+        final int progressionLength = 10;
+        final int progressionMaxStep = 5;
+        final int progressionMaxFirstNumber = 10;
 
-    public String getCorrectAnswer() {
-        return String.valueOf(progression[secretIndex]);
-    }
-
-    public String getQuestion() {
-        progression = getProgression(PROGRESSION_LENGTH, PROGRESSION_MAX_FIRST_NUMBER, PROGRESSION_MAX_STEP);
-        secretIndex = (int) (Math.random() * progression.length);
-        StringBuilder builder = new StringBuilder("Question:");
+        int[] progression = new int[progressionLength];
+        int first = Utils.getRandomNumber(progressionMaxFirstNumber);
+        int step = Utils.getRandomNumber(progressionMaxStep) + 1;
         for (int i = 0; i < progression.length; i++) {
-            builder.append(" ").append((i == secretIndex) ? ".." : String.valueOf(progression[i]));
+            progression[i] = first + step * i;
         }
-        return builder.toString();
-    }
 
-    public int[] getProgression(int length, int firstNumber, int maxStep) {
-        int[] newProgression = new int[length];
-        int first = Utils.getRandomNumber(firstNumber);
-        int step = Utils.getRandomNumber(maxStep) + 1;
-        for (int i = 0; i < newProgression.length; i++) {
-            newProgression[i] = first + step * i;
+        var secretIndex = (int) (Math.random() * progression.length);
+        StringBuilder questionBuilder = new StringBuilder("Question:");
+        for (int i = 0; i < progression.length; i++) {
+            questionBuilder.append(" ").append((i == secretIndex) ? ".." : String.valueOf(progression[i]));
         }
-        return newProgression;
+        return new Question(questionBuilder.toString(), String.valueOf(progression[secretIndex]));
     }
 }

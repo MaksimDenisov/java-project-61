@@ -16,13 +16,13 @@ public class Engine {
         System.out.println(game.getRules());
         for (int i = 0; i < GAME_ROUNDS; i++) {
             QuestionGame.Question question = game.getNewQuestion();
-            System.out.printf("Question: %s\n", question.getQuestion());
+            System.out.printf("Question: %s\n", question.question());
             String answer = scanner.next();
             System.out.printf("Your answer: %s\n", answer);
-            if (answer.equals(question.getAnswer())) {
+            if (answer.equals(question.answer())) {
                 System.out.println("Correct!");
             } else {
-                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", answer, question.getAnswer());
+                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", answer, question.answer());
                 System.out.printf("Let's try again, %s!\n", name);
                 scanner.close();
                 return;

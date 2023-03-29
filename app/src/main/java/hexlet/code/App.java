@@ -12,9 +12,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class App {
-
-    private static final String MSG_GAME = "%s - %s\n";
-
     private static final Map<String, QuestionGame> GAMES = new LinkedHashMap<>();
 
     static {
@@ -30,11 +27,12 @@ public class App {
     }
 
     public static void chooseGame() {
+        final String msgGame = "%s - %s\n";
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the game number and press Enter.");
-        System.out.printf(MSG_GAME, "1", "Greet");
+        System.out.printf(msgGame, "1", "Greet");
         GAMES.keySet().forEach(k -> System.out.printf("%s - %s\n", k, GAMES.get(k).getGameName()));
-        System.out.printf(MSG_GAME, "0", "Exit");
+        System.out.printf(msgGame, "0", "Exit");
         String key = scanner.next();
         switch (key) {
             case "1" -> {

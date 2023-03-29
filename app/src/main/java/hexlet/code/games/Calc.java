@@ -2,30 +2,36 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class Calc implements QuestionGame {
-    private static final String RULES = "What is the result of the expression?";
-    private static final int MAX_NUMBER = 100;
+    private final String rules = "What is the result of the expression?";
+    private final int maxNumber = 100;
 
+    /**
+     * Rules of game.
+     * @return Rules of game.
+     */
     @Override
-    public final String getRules() {
-        return RULES;
+    public String getRules() {
+        return rules;
     }
 
+    /**
+     * Get new question.
+     * @return Question with correct answer.
+     */
     @Override
-    public final Question getNewQuestion() {
-        int a = Utils.getRandomNumber(MAX_NUMBER);
-        int b = Utils.getRandomNumber(MAX_NUMBER);
+    public Question getNewQuestion() {
+        int a = Utils.getRandomNumber(maxNumber);
+        int b = Utils.getRandomNumber(maxNumber);
         char operator = getRandomOperator();
-        return new Question(String.format("%d %c %d", a, operator, b), getCorrectAnswer(a, b, operator));
-    }
-
-    public final String getCorrectAnswer(int a, int b, char operator) {
-        return switch (operator) {
+        var correctAnswer = switch (operator) {
             case '+' -> String.valueOf(a + b);
             case '-' -> String.valueOf(a - b);
             case '*' -> String.valueOf(a * b);
-            default -> "No answer";
+            default -> throw new IllegalArgumentException(String.format("%s is not valid operation.", operator));
         };
+        return new Question(String.format("%d %c %d", a, operator, b), correctAnswer);
     }
 
     private char getRandomOperator() {

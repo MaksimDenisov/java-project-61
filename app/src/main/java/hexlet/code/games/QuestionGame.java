@@ -11,13 +11,12 @@ public interface QuestionGame {
     Question getNewQuestion();
 
     record Question(String question, String answer) {
-
-        public String getQuestion() {
-            return question;
-        }
-
-        public String getAnswer() {
-            return answer;
+        @Override
+        public String toString() {
+            return "Question{"
+                    + "question='" + question + '\''
+                    + ", answer='" + answer + '\''
+                    + '}';
         }
     }
 }
