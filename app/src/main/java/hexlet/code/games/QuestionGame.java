@@ -13,10 +13,7 @@ public interface QuestionGame {
     record Question(String question, String answer) {
         @Override
         public String toString() {
-            return "Question{"
-                    + "question='" + question + '\''
-                    + ", answer='" + answer + '\''
-                    + '}';
+            return question + " : correct answer is " + answer;
         }
     }
 }

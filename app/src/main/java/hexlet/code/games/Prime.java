@@ -2,7 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class Prime implements QuestionGame {
     private final String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     private final int maxNumber = 100;
