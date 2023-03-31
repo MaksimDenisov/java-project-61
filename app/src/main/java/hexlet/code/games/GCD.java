@@ -2,7 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class GCD implements QuestionGame {
     private final String rules = "Find the greatest common divisor of given numbers.";
     private final int maxNumber = 99;

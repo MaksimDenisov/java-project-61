@@ -2,7 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class Even implements QuestionGame {
     private final String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     private final int maxNumber = 100;

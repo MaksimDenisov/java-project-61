@@ -2,7 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class Progression implements QuestionGame {
     private final String rules = "What number is missing in the progression?";
 

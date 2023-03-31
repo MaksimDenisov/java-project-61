@@ -2,7 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Utils;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class Calc implements QuestionGame {
     private final String rules = "What is the result of the expression?";
     private final int maxNumber = 100;
