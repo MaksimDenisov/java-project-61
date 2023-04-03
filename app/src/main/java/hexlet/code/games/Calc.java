@@ -24,14 +24,14 @@ public class Calc implements QuestionGame {
         int a = Utils.getRandomNumber(maxNumber);
         int b = Utils.getRandomNumber(maxNumber);
         char operator = getRandomOperator();
-        return new Question(String.format("%d %c %d", a, operator, b), calculate(a, b, operator));
+        return new Question(String.format("%d %c %d", a, operator, b), String.valueOf(calculate(a, b, operator)));
     }
 
-    private String calculate(int a, int b, char operator) {
+    private int calculate(int a, int b, char operator) {
         return switch (operator) {
-            case '+' -> String.valueOf(a + b);
-            case '-' -> String.valueOf(a - b);
-            case '*' -> String.valueOf(a * b);
+            case '+' -> a + b;
+            case '-' -> a - b;
+            case '*' -> a * b;
             default -> throw new IllegalArgumentException(String.format("%s is not valid operation.", operator));
         };
     }
